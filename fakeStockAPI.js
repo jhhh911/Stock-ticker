@@ -3,13 +3,16 @@ export function updateClock() {
   return now.toLocaleTimeString()
 }
 
- export function getStockData() {
-  let randPrice = Math.random() * 3
+let randPrice = Math.random() * 3
+let currTime = updateClock()
+
+export function getStockData() {
+  
   return {
     name: 'QtechAI',
     sym: 'QTA',
     price: randPrice.toFixed(2),
-    time: updateClock()
+    time: currTime
   }
 }
 
