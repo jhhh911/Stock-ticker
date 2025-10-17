@@ -1,5 +1,7 @@
 import { getStockData } from "./fakeStockAPI.js";
 
+let prevPrice = null;
+
 function render() {
   const stockData = getStockData();
   const stockDisplayName = document.getElementById("name");
@@ -14,13 +16,15 @@ function render() {
   stockDisplaySymbol.innerText = `Symbol: ${sym}`;
   stockDisplayPrice.innerText = `Price: ${price}`;
   stockDisplayTime.innerText = `Time: ${time}`;
-   if (price > 0.95) {
-    stockDisplayPriceIcon.innerHTML = '&#8593;'
-  } else if (price < 0.95) {
-    stockDisplayPriceIcon.innerHTML = '&#8595;'
-  } else {
-    stockDisplayPriceIcon.innerHTML = '&#8594;'
-  }
+
+  const priceDirection =
+    price > prevPrice
+      ? (stockDisplayPriceIcon.innerHTML = "&#8593;")
+      : price === prevPrice
+      ? (stockDisplayPriceIcon.innerHTML = "&#8594;")
+      : (stockDisplayPriceIcon.innerHTML = "&#8595;");
+
+  prevPrice = price;
 }
 
 render();
