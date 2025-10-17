@@ -1,11 +1,23 @@
-const time = document.getElementById('time');
+import { updateClock, getStockData, stockData } from "./fakeStockAPI.js"
 
-function updateClock() {
-  const now = new Date()
-  let aMPM = now >= 12 ? 'PM' : 'AM'
-  time.innerHTML = `Time: ${now.toLocaleTimeString()}${aMPM}`
+function renderStockTicker(stockData) {
+  const stockDisplayName = document.getElementById('name')
+  const stockDisplaySymbol = document.getElementById('symbol')
+  const stockDisplayPrice = document.getElementById('price')
+  const stockDisplayPriceIcon = document.getElementById('price-icon')
+  const stockDisplayTime = document.getElementById('time')
+
+  const { name, sym, price, time } = stockData
+
+  stockDisplayName.innerText = `Name: ${name}`
+  stockDisplaySymbol.innerText = `Symbol: ${sym}`
+  stockDisplayPrice.innerText = `Price: ${price}`
+  stockDisplayTime.innerText = `Time: ${time}`
+  
 }
 
-updateClock()
 
-setInterval(updateClock, 1000)
+setInterval(renderStockTicker, 1500, stockData)
+
+
+
