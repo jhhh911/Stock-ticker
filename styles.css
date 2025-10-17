@@ -8,3 +8,12 @@ span {
   font-size: 36px;
   margin-left: 5px;
 }
+
+#price,
+#price-icon {
+  display: inline-block;
+}
+
+#price-icon {
+  margin-left: 10px;
+}
