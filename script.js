@@ -1,25 +1,21 @@
-import { stockData, updateClock, getStockData } from "./fakeStockAPI.js"
+import { getStockData } from "./fakeStockAPI.js";
 
-function render(stockData) {
-  const stockDisplayName = document.getElementById('name')
-  const stockDisplaySymbol = document.getElementById('symbol')
-  const stockDisplayPrice = document.getElementById('price')
-  const stockDisplayPriceIcon = document.getElementById('price-icon')
-  const stockDisplayTime = document.getElementById('time')
+function render() {
+  const stockData = getStockData();
+  const stockDisplayName = document.getElementById("name");
+  const stockDisplaySymbol = document.getElementById("symbol");
+  const stockDisplayPrice = document.getElementById("price");
+  const stockDisplayPriceIcon = document.getElementById("price-icon");
+  const stockDisplayTime = document.getElementById("time");
 
-  const { name, sym, price, time } = stockData
+  const { name, sym, price, time } = stockData;
 
-  stockDisplayName.innerText = `Name: ${name}`
-  stockDisplaySymbol.innerText = `Symbol: ${sym}`
-  stockDisplayPrice.innerText = `Price: ${price}`
-  stockDisplayTime.innerText = `Time: ${time}`
-
-  setInterval(render, 1000, stockData)
+  stockDisplayName.innerText = `Name: ${name}`;
+  stockDisplaySymbol.innerText = `Symbol: ${sym}`;
+  stockDisplayPrice.innerText = `Price: ${price}`;
+  stockDisplayTime.innerText = `Time: ${time}`;
 }
 
-render(stockData)
+render();
 
-
-
-
-
+setInterval(render, 1500);
